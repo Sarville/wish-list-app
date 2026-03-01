@@ -70,23 +70,23 @@ export default function WishList() {
     <>
       <div className="flex flex-col h-full">
         {/* Header */}
-        <div className="flex items-center justify-between mb-4 shrink-0">
-          <div>
-            <h1 className="text-3xl font-bold text-white">My Wish List</h1>
-            <p className="text-slate-400 text-sm mt-1">
+        <div className="flex items-center justify-between mb-4 shrink-0 gap-3">
+          <div className="min-w-0">
+            <h1 className="text-xl sm:text-3xl font-bold text-white leading-tight">My Wish List</h1>
+            <p className="text-slate-400 text-xs sm:text-sm mt-0.5">
               {total} wish{total !== 1 ? "es" : ""} total
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={() => setLogsOpen(true)}
-              className="text-slate-400 hover:text-slate-200 font-medium px-4 py-2 rounded-lg border border-slate-600 hover:border-slate-400 transition-colors text-sm"
+              className="text-slate-400 hover:text-slate-200 font-medium px-3 py-2 rounded-lg border border-slate-600 hover:border-slate-400 transition-colors text-sm whitespace-nowrap"
             >
               Logs
             </button>
             <button
               onClick={() => setModalOpen(true)}
-              className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-5 py-2 rounded-lg transition-colors"
+              className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-3 sm:px-5 py-2 rounded-lg transition-colors text-sm whitespace-nowrap"
             >
               + Add Wish
             </button>

@@ -95,7 +95,7 @@ export default function LogPanel({ open, onClose }: Props) {
     <>
       {/* Slide-in panel */}
       <div
-        className={`fixed top-0 right-0 h-screen w-[480px] bg-[#0f2239] border-l border-slate-700 shadow-2xl z-40 flex flex-col transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-screen w-full sm:w-[480px] bg-[#0f2239] border-l border-slate-700 shadow-2xl z-40 flex flex-col transition-transform duration-300 ease-in-out ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -220,18 +220,18 @@ function LogEntry({ log }: { log: RequestLog }) {
 
   return (
     <div className="bg-[#1e3a5f] rounded-xl p-3 border border-slate-700/50">
-      <div className="flex items-start justify-between gap-2">
+      <div className="flex items-start gap-2">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
             <span
-              className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${methodColor(log.method)}`}
+              className={`text-xs font-semibold px-2 py-0.5 rounded-full border shrink-0 ${methodColor(log.method)}`}
             >
               {log.method}
             </span>
             {log.body && (
               <button
                 onClick={() => setExpanded((e) => !e)}
-                className="text-slate-500 hover:text-slate-300 text-xs transition-colors"
+                className="text-slate-500 hover:text-slate-300 text-xs transition-colors shrink-0"
               >
                 {expanded ? "▲ hide body" : "▼ body"}
               </button>
@@ -240,13 +240,13 @@ function LogEntry({ log }: { log: RequestLog }) {
           <p className="text-white text-sm font-mono truncate" title={shortUrl}>
             {shortUrl}
           </p>
+          <p className="text-slate-500 text-xs mt-0.5">{formatDate(log.createdAt)}</p>
           {expanded && log.body && (
             <pre className="mt-2 text-xs text-slate-300 bg-[#0a1628] rounded-lg p-2 overflow-x-auto whitespace-pre-wrap break-all max-h-40">
               {log.body}
             </pre>
           )}
         </div>
-        <p className="text-slate-500 text-xs shrink-0 mt-0.5">{formatDate(log.createdAt)}</p>
       </div>
     </div>
   );
