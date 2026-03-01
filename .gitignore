@@ -42,3 +42,6 @@ prisma/migrations
 
 # claude code
 .claude/
+
+# local docs
+PROJECT.md
