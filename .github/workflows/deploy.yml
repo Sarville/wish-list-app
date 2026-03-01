@@ -20,7 +20,7 @@ jobs:
           script: |
             cd /var/www/wish-list-app
             git pull origin master
-            npm install --omit=dev
+            npm install
             npx prisma migrate deploy
             npx prisma generate
             npm run build

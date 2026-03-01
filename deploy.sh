@@ -7,7 +7,7 @@ cd "$APP_DIR"
 echo "[$(date)] === Deploy started ==="
 
 git pull origin master
-npm install --omit=dev
+npm install
 npx prisma migrate deploy
 npx prisma generate
 npm run build
