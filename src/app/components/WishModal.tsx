@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, type FormEvent } from "react";
 import type { Wish } from "@/types/wish";
+import { basePath } from "@/lib/config";
 
 const TITLE_MAX = 50;
 const DESC_MAX = 300;
@@ -45,7 +46,7 @@ export default function WishModal({ wish, onClose, onSave }: Props) {
     setSaving(true);
     setError("");
     try {
-      const url = wish ? `/api/wishes/${wish.id}` : "/api/wishes";
+      const url = wish ? `${basePath}/api/wishes/${wish.id}` : `${basePath}/api/wishes`;
       const method = wish ? "PATCH" : "POST";
       const res = await fetch(url, {
         method,

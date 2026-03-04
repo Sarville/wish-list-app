@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import type { Wish, PaginatedWishes } from "@/types/wish";
+import { basePath } from "@/lib/config";
 import WishCard from "./WishCard";
 import WishModal from "./WishModal";
 import Pagination from "./Pagination";
@@ -27,7 +28,7 @@ export default function WishList() {
         limit: "5",
         ...(search ? { search } : {}),
       });
-      const res = await fetch(`/api/wishes?${params}`);
+      const res = await fetch(`${basePath}/api/wishes?${params}`);
       const json: PaginatedWishes = await res.json();
       setWishes(json.data);
       setTotal(json.total);
@@ -47,7 +48,7 @@ export default function WishList() {
   };
 
   const handleDelete = async (id: string) => {
-    await fetch(`/api/wishes/${id}`, { method: "DELETE" });
+    await fetch(`${basePath}/api/wishes/${id}`, { method: "DELETE" });
     fetchWishes();
   };
 

@@ -19,11 +19,11 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script_stop: true
           script: |
-            cd /var/www/wish-list-app
+            cd /var/www/project_next
             git pull origin master
             npm install
             npx prisma migrate deploy
             npx prisma generate
             npm run build
-            pm2 restart wish-list-app || pm2 start npm --name "wish-list-app" -- start
+            pm2 restart project_next || pm2 start npm --name "project_next" -- start
             pm2 save
